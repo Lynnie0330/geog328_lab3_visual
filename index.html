@@ -54,9 +54,7 @@
             overflow-y: scroll;
         }
 
-        #map {
-            flex-grow: 1;
-        }
+        
     </style>
 </head>
 
@@ -82,12 +80,12 @@
     </main>
     <script>
         mapboxgl.accessToken =
-            'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
+            'pk.eyJ1IjoibHlubmllMDMzMCIsImEiOiJjbTZzZzUyNjUwN3NxMmtwbTZ4d2MxMXVhIn0.nwnNS_j3jxgI_JDXa7ctvA';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+            style: 'mapbox://styles/mapbox/light-v10', // style URL
             zoom: 5.5, // starting zoom
-            center: [138.043, 38] // starting center
+            center: [-98.5, 39.8] // starting center
         });
 
 
