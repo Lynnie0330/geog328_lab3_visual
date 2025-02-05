@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Load data from an external GeoJSON file</title>
+    <title>US earthquakes</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
@@ -36,7 +36,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             width: 100%;
-            border: 1px solid #ddd;
+            border: 1px solid #c1baba;
         }
 
         th,
@@ -47,6 +47,15 @@
 
         tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        #side-panel {
+            flex-basis: 500px;
+            overflow-y: scroll;
+        }
+
+        #map {
+            flex-grow: 1;
         }
     </style>
 </head>
@@ -85,7 +94,7 @@
         async function geojsonFetch() {
 
 
-            let response = await fetch('assets/earthquakes.geojson');
+            let response = await fetch('assets/earthquake-US.json');
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -94,13 +103,13 @@
             let earthquakes = await response.json();
 
 
-            response = await fetch('assets/japan.json');
+            response = await fetch('assets/us-states.json');
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            let japan = await response.json();
+            let US = await response.json();
 
 
             var table = document.getElementsByTagName("table");
@@ -147,15 +156,15 @@
                 });
 
 
-                map.addSource('japan', {
+                map.addSource('US', {
                     type: 'geojson',
-                    data: japan
+                    data: US
                 });
 
                 map.addLayer({
-                    'id': 'japan-layer',
+                    'id': 'us-layer',
                     'type': 'fill',
-                    'source': 'japan',
+                    'source': 'US',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
