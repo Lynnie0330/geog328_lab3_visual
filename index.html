@@ -27,6 +27,8 @@
 
         #map {
             flex-grow: 1;
+            width: calc(100% - 320px);
+            
         }
 
         button {
@@ -50,8 +52,16 @@
         }
 
         #side-panel {
-            flex-basis: 500px;
+            position: absolute;
+            top: 30px;
+            right: 25px;
+            width: 25%;
+            max-height: 90%;
+            background-color: white;
+            padding: 0;
+            border-radius: 8px;
             overflow-y: scroll;
+            z-index: 999;
         }
 
         
@@ -62,7 +72,7 @@
     <main id="container">
         <div id="table">
 
-            <h2>Earthquake List</h2>
+            <h2>US Earthquake List</h2>
             <button onclick="sortTable()">Sort by Magnitude</button>
             
 
